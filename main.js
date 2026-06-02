@@ -85,9 +85,81 @@ document.querySelectorAll('[data-count]').forEach(el => {
 });
 
 // ── Contact form handler ──────────────────────────────────────
-function submitForm() {
+// ── Contact form handler ──────────────────────────────────────
+async function submitForm(event) {
+  if (event) event.preventDefault();
+
   const formInner = document.getElementById('formInner');
   const formSuccess = document.getElementById('formSuccess');
+  const submitBtn = document.querySelector('.form-submit');
+
+  const firstName = document.getElementById('firstName');
+  const lastName = document.getElementById('lastName');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+  const service = document.getElementById('service');
+  const message = document.getElementById('message');
+
+  const fields = [firstName, email, service, message].filter(Boolean);
+  let valid = true;
+
+  fields.forEach(field => {
+    if (!field.value || field.value === '') {
+      field.style.borderColor = '#c0392b';
+      field.style.boxShadow = '0 0 0 3px rgba(192, 57, 43, 0.1)';
+      valid = false;
+    } else {
+      field.style.borderColor = '';
+      field.style.boxShadow = '';
+    }
+  });
+
+  if (!valid) return;
+
+  if (submitBtn) {
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+  }
+
+  const formData = new FormData();
+  formData.append('firstName', firstName.value);
+  formData.append('lastName', lastName.value);
+  formData.append('email', email.value);
+  formData.append('phone', phone.value);
+  formData.append('service', service.value);
+  formData.append('message', message.value);
+
+  try {
+    const response = await fetch('https://formspree.io/f/mnjyaqew', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      if (formInner) formInner.style.display = 'none';
+      if (formSuccess) {
+        formSuccess.classList.add('show');
+        formSuccess.style.animation = 'fadeIn 0.6s ease forwards';
+      }
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    alert('Message failed to send. Check your internet or Formspree link.');
+  }
+
+  if (submitBtn) {
+    submitBtn.textContent = 'Send My Request';
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+  }
+}
+
+window.submitForm = submitForm;
 
   // Basic validation
   const firstName = document.getElementById('firstName');
@@ -128,7 +200,7 @@ function submitForm() {
       formSuccess.style.animation = 'fadeIn 0.6s ease forwards';
     }
   }, 800);
-}
+
 
 // Make submitForm globally available
 window.submitForm = submitForm;
