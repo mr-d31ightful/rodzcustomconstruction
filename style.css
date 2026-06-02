@@ -1632,12 +1632,28 @@ footer {
   .navbar-links, .navbar-cta { display: none; }
   .hamburger { display: flex; }
 
-  .hero-stats {
+.hero-stats {
     position: static;
-    margin-top: 3rem;
-    justify-content: flex-start;
-    gap: 2rem;
-  }
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+    min-width: 90px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+}
+
+.stat-label {
+    font-size: 0.55rem;
+}
 
   .gallery-grid {
     grid-template-columns: 1fr 1fr;
