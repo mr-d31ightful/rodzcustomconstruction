@@ -69,7 +69,10 @@
       </div>
     </div>
 
-   
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">Scroll</span>
+    </div>
   </section>
 
   <!-- ══ MARQUEE ══ -->
@@ -198,7 +201,7 @@
           <span class="gallery-cat">Renovation</span>
           <h4 class="gallery-title">Modern Kitchen Overhaul</h4>
         </div>
-      
+      </div>
       <div class="gallery-item reveal reveal-delay-2">
         <div class="gallery-placeholder">
           <div class="gallery-ph-icon">🏢</div>
@@ -363,77 +366,52 @@
       </div>
     </div>
 
-<form class="contact-form reveal"
-      action="https://formspree.io/f/mnjyaqew"
-      method="POST">
-
-  <h3 class="form-title">Request a Quote</h3>
-  <p class="form-subtitle">
-    Tell us about your project and we'll respond within 24 hours.
-  </p>
-
-  <div class="form-row">
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text"
-             id="firstName"
-             name="firstName"
-             placeholder="John"
-             required />
+    <div class="contact-form reveal">
+      <h3 class="form-title">Request a Quote</h3>
+      <p class="form-subtitle">Tell us about your project and we'll respond within 24 hours.</p>
+      <div id="formSuccess" class="form-success">
+        <div class="form-success-icon">✅</div>
+        <div class="form-success-text">Message Received!</div>
+        <p class="form-success-sub">We'll be in touch within 24 hours.</p>
+      </div>
+      <div id="formInner">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(254) 555-0000" />
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Custom Home Build</option>
+            <option>Renovation / Remodel</option>
+            <option>Commercial Construction</option>
+            <option>Room Addition</option>
+            <option>Kitchen &amp; Bath</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" placeholder="Describe your project, budget range, and timeline..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Send My Request</button>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text"
-             id="lastName"
-             name="lastName"
-             placeholder="Smith" />
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="email">Email Address</label>
-    <input type="email"
-           id="email"
-           name="email"
-           placeholder="john@example.com"
-           required />
-  </div>
-
-  <div class="form-group">
-    <label for="phone">Phone Number</label>
-    <input type="tel"
-           id="phone"
-           name="phone"
-           placeholder="(254) 555-0000" />
-  </div>
-
-  <div class="form-group">
-    <label for="service">Service Needed</label>
-    <select id="service" name="service" required>
-      <option value="" disabled selected>Select a service...</option>
-      <option>Custom Home Build</option>
-      <option>Renovation / Remodel</option>
-      <option>Commercial Construction</option>
-      <option>Room Addition</option>
-      <option>Kitchen & Bath</option>
-      <option>Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="message">Project Details</label>
-    <textarea id="message"
-              name="message"
-              placeholder="Describe your project, budget range, and timeline..."
-              required></textarea>
-  </div>
-
-  <button type="submit" class="form-submit">
-    Send My Request
-  </button>
-
-</form>
   </section>
 
   <!-- ══ FOOTER ══ -->
