@@ -1686,52 +1686,6 @@ footer {
   .btn-primary, .btn-secondary { text-align: center; }
 }
 
-.hero {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    height: 100vh !important;
-    min-height: 700px !important;
-    position: relative !important;
-    z-index: 1 !important;
-}
-
-.hero-content,
-.hero-eyebrow,
-.hero-title,
-.hero-subtitle,
-.hero-actions,
-.hero-stats,
-.scroll-indicator {
-    visibility: visible !important;
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-.hero-bg {
-    z-index: 0 !important;
-}
-
-.hero-content,
-.hero-stats,
-.scroll-indicator {
-    z-index: 2 !important;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    image-rendering: auto;
-}
-
 /* Home page picture slide show*/
 
 .gallery-item img {
