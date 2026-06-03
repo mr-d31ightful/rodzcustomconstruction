@@ -1677,7 +1677,6 @@ footer {
   .services-full, .contact-page-section { padding: 5rem 5vw; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
-/* Mobile home screen banner */
 
 @media (max-width: 480px) {
   .hero-title { font-size: 3rem; }
@@ -1687,31 +1686,7 @@ footer {
   .btn-primary, .btn-secondary { text-align: center; }
 }
 
-.hero {
-  display: flex !important;
-  height: auto !important;
-  min-height: 100vh !important;
-  padding: 120px 5vw 4rem !important;
-  align-items: flex-start !important;
-}
 
-.hero-content {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-  padding: 0 !important;
-  z-index: 2 !important;
-}
-
-.hero-eyebrow,
-.hero-title,
-.hero-subtitle,
-.hero-actions {
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
 /* Home page picture slide show*/
 
 .gallery-item img {
