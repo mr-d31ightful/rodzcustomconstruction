@@ -1745,3 +1745,8 @@ footer {
 .gallery-overlay {
     opacity: 1 !important;
 }
+
+.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
