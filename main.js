@@ -85,12 +85,17 @@ document.querySelectorAll('[data-count]').forEach(el => {
 });
 
 // ── Contact form handler ──────────────────────────────────────
-// ── Contact form handler ──────────────────────────────────────
+async function submitForm(event) {
+  if (event) event.preventDefault();
 
+  const formInner = document.getElementById('formInner');
+  const formSuccess = document.getElementById('formSuccess');
+  const submitBtn = document.querySelector('.form-submit');
 
-  // Basic validation
   const firstName = document.getElementById('firstName');
+  const lastName = document.getElementById('lastName');
   const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
   const service = document.getElementById('service');
   const message = document.getElementById('message');
 
@@ -102,34 +107,52 @@ document.querySelectorAll('[data-count]').forEach(el => {
       field.style.borderColor = '#c0392b';
       field.style.boxShadow = '0 0 0 3px rgba(192, 57, 43, 0.1)';
       valid = false;
-
-      field.addEventListener('input', () => {
-        field.style.borderColor = '';
-        field.style.boxShadow = '';
-      }, { once: true });
+    } else {
+      field.style.borderColor = '';
+      field.style.boxShadow = '';
     }
   });
 
   if (!valid) return;
 
-  // Simulate submission
-  const submitBtn = document.querySelector('.form-submit');
   if (submitBtn) {
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
     submitBtn.style.opacity = '0.7';
   }
 
-  setTimeout(() => {
-    if (formInner) formInner.style.display = 'none';
-    if (formSuccess) {
-      formSuccess.classList.add('show');
-      formSuccess.style.animation = 'fadeIn 0.6s ease forwards';
+  const formData = new FormData();
+  formData.append('firstName', firstName.value);
+  formData.append('lastName', lastName.value);
+  formData.append('email', email.value);
+  formData.append('phone', phone.value);
+  formData.append('service', service.value);
+  formData.append('message', message.value);
+
+  try {
+    const response = await fetch('https://formspree.io/f/mnjyaqew', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      if (formInner) formInner.style.display = 'none';
+      if (formSuccess) formSuccess.classList.add('show');
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-  }, 800);
+  } catch (error) {
+    alert('Message failed to send.');
+  }
 
+  if (submitBtn) {
+    submitBtn.textContent = 'Send My Request';
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+  }
+}
 
-// Make submitForm globally available
 window.submitForm = submitForm;
 
 // ── Gallery hover tilt effect ─────────────────────────────────
