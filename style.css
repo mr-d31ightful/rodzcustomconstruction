@@ -1705,3 +1705,12 @@ footer {
     opacity: 1 !important;
     transform: none !important;
 }
+
+.hero-title,
+.hero-subtitle,
+.hero-eyebrow,
+.hero-actions,
+.hero-stats {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
