@@ -241,15 +241,7 @@ ul { list-style: none; }
 }
 
 /* Diagonal accent bar */
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  top: 0; right: 15%;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-  opacity: 0.4;
-}
+
 
 .hero-content {
   position: relative;
@@ -1715,8 +1707,3 @@ footer {
     transform: translateY(0) !important;
 }
 
-@media (max-width: 768px) {
-    .hero-bg::after {
-        display: none;
-    }
-}
